@@ -338,6 +338,27 @@ PREFX
    : PN_PREFIX
    ;
 
+
+STRING_LITERAL
+   : STRING_LITERAL2 | STRING_LITERAL_LONG2
+   ;
+
+
+INT_LITERAL
+   : ('-')? (DIGIT) +
+   ;
+
+
+QUALIFIED_NAME_LITERAL
+   : '\'' QUALIFIED_NAME '\''
+   ;
+
+
+LANGTAG
+   : '@' [a-zA-Z] + ('-' [a-zA-Z0-9] +)*
+   ;
+
+
 QUALIFIED_NAME
    : (PN_PREFIX ':')? PN_LOCAL | PN_PREFIX ':'
    ;
@@ -368,21 +389,6 @@ HEX
    ;
 
 
-STRING_LITERAL
-   : STRING_LITERAL2 | STRING_LITERAL_LONG2
-   ;
-
-
-INT_LITERAL
-   : ('-')? (DIGIT) +
-   ;
-
-
-QUALIFIED_NAME_LITERAL
-   : '\'' QUALIFIED_NAME '\''
-   ;
-
-
 ECHAR
    : '\\' [btnfr"'\\]
    ;
@@ -402,7 +408,3 @@ DATETIME
    : '-'? ([1-9] [0-9] [0-9] [0-9] + | '0' [0-9] [0-9] [0-9]) '-' ('0' [1-9] | '1' [0-2]) '-' ('0' [1-9] | [12] [0-9] | '3' [01]) 'T' ((([01] [0-9]) | ('2' [0-3])) ':' [0-5] [0-9] ':' [0-5] [0-9] ('.' [0-9] +)? | ('24:00:00' ('.' '0' +)?)) ('Z' | ('+' | '-') (('0' [0-9] | '1' [0-3]) ':' [0-5] [0-9] | '14:00'))?
    ;
 
-
-LANGTAG
-   : '@' [a-zA-Z] + ('-' [a-zA-Z0-9] +)*
-   ;
